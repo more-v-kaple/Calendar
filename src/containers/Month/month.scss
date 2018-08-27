@@ -1,0 +1,12 @@
+.month {
+    border: 1px solid #ebebeb;
+    display: flex;
+    flex-direction: column;
+
+    .week {
+        border-bottom: 1px solid #ebebeb;
+    }
+    .week:last-child {
+        border-bottom: 1px transparent;
+    }
+}

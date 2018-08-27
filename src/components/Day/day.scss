@@ -1,0 +1,29 @@
+.day {
+    padding: 9px 7px;
+    flex-basis: calc(100%/7);
+    height: 125px;
+    box-sizing: border-box;
+
+    .date {
+        padding-bottom: 9px;
+        color: #999999;
+        font-weight: 400;
+    }
+
+    &_current {
+        background-color: #f4f4f4;
+
+        .date {
+            font-weight: 700;
+        }
+    }
+
+    &_planned {
+        background-color: #c2e4fe;
+    }
+    &_selected {
+        border: none;
+        background-color: #e5f1f9;
+        box-shadow: inset 1px 1px 1px #8abfe9, inset -1px -1px 1px #8abfe9, inset 2px 2px 2px #86c9fd, inset -2px -2px 2px #86c9fd;
+    }
+}

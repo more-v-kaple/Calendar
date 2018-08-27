@@ -1,0 +1,44 @@
+@import '~assets/styles/main.scss';
+
+$max-width: 60%;
+$font-size: 12px;
+$line-height: 14px;
+
+$input__padding: 0;
+$placeholder__color: #848484;
+
+.input-wrapper {
+    width: 200px;
+    height: 25px;
+    position: relative;
+    box-shadow: 0px -1px 2px hsl(0, 0%, 80%);
+
+    .input {
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        padding: $input__padding;
+        font-size: $font-size;
+        line-height: $line-height;
+        color: black;
+
+        &.applied-style {
+            color: $common__dark-color;
+        }
+
+        &.error {
+            color: $red;
+        }
+
+        &::placeholder {
+            text-indent: 6px;
+            color: #cccccc;
+        }
+    }
+
+    .button {
+        right: 5px;
+        top: 4px;
+        position: absolute;
+    }
+}

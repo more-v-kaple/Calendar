@@ -1,0 +1,11 @@
+.week {
+    width: 100%;
+    display: flex;
+
+    .day {
+        border-right: 1px solid #ebebeb;
+    }
+    .day:last-child {
+        border-right: 1px transparent;
+    }
+}

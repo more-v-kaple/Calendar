@@ -1,0 +1,22 @@
+.dropdown__item {
+    padding: 8px;
+    width: 188px;
+    height: 50px;
+    box-sizing: border-box;
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    flex-shrink: 0;
+    border-bottom: 1px solid #ebebeb;
+
+    .item__title {
+        font-weight: 700;
+    }
+
+    &:hover {
+        background-color: #27a1ff;
+        color: white;
+    }
+}

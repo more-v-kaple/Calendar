@@ -1,0 +1,13 @@
+.event {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        padding-bottom: 12px;
+        font-weight: 700;
+    }
+
+    &__members {
+        
+    }
+}

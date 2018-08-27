@@ -1,0 +1,26 @@
+.month-controls {
+    display: flex;
+    align-items: center;
+
+    &__date {
+        padding: 0 8px 0 6px;
+        font-size: 25px;
+    }
+
+    .button {
+        padding: 2px 4px;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #dfdfdf;
+        border-radius: 3px;
+        box-sizing: border-box;
+        box-shadow: inset 1px 1px 5px 0px #dcdbdb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:first-child {
+            transform: rotateY(180deg);
+        }
+    }
+}
