@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -25,7 +25,7 @@ const initialState = {
     weeksAmount: null
 };
 @clickInterceptor({ target: 'month' })
-class Month extends PureComponent {
+class Month extends Component {
     constructor (props) {
         super(props);
 
@@ -62,6 +62,24 @@ class Month extends PureComponent {
             this.createCalendar();
         }
 
+    }
+
+    shouldComponentUpdate (nextProps) {
+        const { month, year, isEventFormOpened, selectedDay } = this.props;
+
+        if ( month !== nextProps || year !== nextProps.year) {
+            return true;
+        }
+
+        if (!isEventFormOpened && nextProps.isEventFormOpened) {
+            return true;
+        }
+        if (isEventFormOpened && nextProps.isEventFormOpened &&
+            selectedDay !== nextProps.selectedDay) {
+            return true;
+        }
+
+        return false;
     }
 
     createCalendar = () => {

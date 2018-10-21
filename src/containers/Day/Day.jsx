@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -21,7 +21,25 @@ import getToday from 'Utils/calculateDate/getToday';
 
 import Event from 'Components/Event';
 
-class Day extends PureComponent {
+class Day extends Component {
+    shouldComponentUpdate (nextProps) {
+        const { date, selectedDay, event } = this.props;
+
+        if (event !== nextProps.event) {
+            return true;
+        }
+        if (Number(selectedDay) !== Number(date) &&
+        Number(date) === Number(nextProps.selectedDay)) {
+            return true;
+        }
+        if (Number(selectedDay) === Number(date) &&
+        Number(nextProps.selectedDay) !== Number(selectedDay)) {
+            return true;
+        }
+
+        return false;
+    }
+
     selectDay = () => {
         const {
             toggleEventForm,
