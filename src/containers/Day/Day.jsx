@@ -90,7 +90,7 @@ Day.propTypes = {
     }),
     date: PropTypes.instanceOf(Date).isRequired,
     toggleEventForm: PropTypes.func.isRequired,
-    selectedDay: PropTypes.string.isRequired,
+    selectedDay: PropTypes.instanceOf(Date).isRequired,
     selectDate: PropTypes.func.isRequired
 };
 

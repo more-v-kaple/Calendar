@@ -36,11 +36,11 @@ class QuickAddEvent extends PureComponent {
     handleInput = e => {
         const inputValue = e.target.value;
 
-        this.setState(prevState => ({ inputValue }));
+        this.setState({ inputValue });
     }
 
     handleEraseValue = () => {
-        this.setState(prevState => ({ inputValue: '' }));
+        this.setState({ inputValue: '' });
     }
 
     createEvent = () => {

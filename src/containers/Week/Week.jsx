@@ -25,7 +25,7 @@ class Week extends PureComponent {
 }
 
 Week.propTypes = {
-    days: PropTypes.arrayOf(PropTypes.string).isRequired,
+    days: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
     index: PropTypes.number.isRequired
 }
 

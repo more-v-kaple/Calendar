@@ -32,7 +32,7 @@ class Calendar extends PureComponent {
 }
 
 Calendar.propTypes = {
-    fetchEvents: PropTypes.func.isRequred
+    fetchEvents: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({

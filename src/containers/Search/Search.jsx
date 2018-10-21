@@ -51,13 +51,13 @@ class Search extends PureComponent {
             { inputValue } = this.state,
             match = findMatch(inputValue, event);
 
-        this.setState(prevState => ({ inputValue: match }));
+        this.setState({ inputValue: match });
         toggleEventForm(true);
         this.showDropdown(false);
     }
 
     showDropdown = status => {
-        this.setState(prevState => ({ isDropdownOpened: status }));
+        this.setState({ isDropdownOpened: status });
     }
 
     handleFocus = () => {
@@ -68,13 +68,13 @@ class Search extends PureComponent {
     }
 
     handleEraseValue = () => {
-        this.setState(prevState => ({ inputValue: '' }));
+        this.setState({ inputValue: '' });
     }
 
     handleInput = e => {
         const inputValue = e.target.value;
 
-        this.setState(prevState => ({ inputValue }));
+        this.setState({ inputValue });
     }
 
     render () {
@@ -103,10 +103,10 @@ class Search extends PureComponent {
 }
 
 Search.propTypes = {
-    disableClickInterceptor: PropTypes.func.isRequired,
-    enableClickInterceptor: PropTypes.func.isRequired,
-    outsideClick: PropTypes.string.isRequired,
     toggleEventForm: PropTypes.func.isRequired,
+    disableClickInterceptor: PropTypes.func,
+    enableClickInterceptor: PropTypes.func,
+    outsideClick: PropTypes.string,
     event: PropTypes.shape({
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,

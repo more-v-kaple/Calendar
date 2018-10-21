@@ -37,6 +37,7 @@ class Input extends PureComponent {
                     onInput = { handleInput }
                     onBlur = { handleBlur }
                     value = { inputValue }
+                    onChange = { handleInput }
                     className={ `input ${style}`}
                     name = { name }
                     type = "text"

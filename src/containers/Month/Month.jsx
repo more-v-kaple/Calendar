@@ -39,7 +39,14 @@ class Month extends PureComponent {
     }
 
     componentDidUpdate (prevProps) {
-        const { year, disableClickInterceptor, month, isEventFormOpened, outsideClick, enableClickInterceptor } = this.props;
+        const {
+            disableClickInterceptor,
+            enableClickInterceptor,
+            isEventFormOpened,
+            outsideClick,
+            month,
+            year
+        } = this.props;
 
         if (!prevProps.isEventFormOpened && isEventFormOpened) {
             enableClickInterceptor();
@@ -106,14 +113,14 @@ class Month extends PureComponent {
 }
 
 Month.propTypes = {
-    disableClickInterceptor: PropTypes.func.isRequired,
-    enableClickInterceptor: PropTypes.func.isRequired,
     isEventFormOpened: PropTypes.bool.isRequired,
-    selectedDay: PropTypes.string.isRequired,
-    outsideClick: PropTypes.bool.isRequired,
-    month: PropTypes.number.isRequired,
     toggleEventForm: PropTypes.func.isRequired,
-    year: PropTypes.number.isRequired
+    selectedDay: PropTypes.instanceOf(Date).isRequired,
+    disableClickInterceptor: PropTypes.func,
+    enableClickInterceptor: PropTypes.func,
+    month: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
+    outsideClick: PropTypes.bool
 };
 
 const mapStateToProps = state => ({

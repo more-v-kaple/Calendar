@@ -4,13 +4,14 @@ import {
 } from '../actionTypes';
 
 import getCurrentMonthYear from 'Utils/calculateDate/getCurrentMonthYear';
+import getToday from 'Utils/calculateDate/getToday';
 
 import { YEAR, MONTH } from 'Constants';
 
 const { year, month } = getCurrentMonthYear();
 
 const initialState = {
-    selected: '',
+    selected: getToday(),
     year,
     month
 };

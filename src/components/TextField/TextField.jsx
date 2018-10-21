@@ -18,6 +18,7 @@ const TextField = props => {
         <div className = "text-field-wrapper">
             <textarea
                 placeholder = { placeholder }
+                onChange = { handleInput }
                 onKeyPress = { handleSubmit }
                 onFocus = { handleFocus }
                 onInput = { handleInput }

@@ -36,5 +36,6 @@ export const displayMonthYear = (year, month) => new Date(year, month)
         month: 'long'
     }).slice(0, -3); //no way to exclude '.г' using native method options
 
-export const formatDateMonthIntoFullDate = date => moment(date, 'DD MMM', 'ru').toDate();
+export const formatDateMonthIntoFullDate = date =>
+    moment(date, 'DD MMM', 'ru').toDate();
 

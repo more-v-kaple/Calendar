@@ -25,9 +25,11 @@ function configureStore (initialState) {
         applyMiddleware(...middleware),
         window.devToolsExtension ? window.devToolsExtension() : f => f
     ));
-
+    // eslint-disable-next-line no-undef
     if (module.hot) {
+    // eslint-disable-next-line no-undef
         module.hot.accept('../reducers', () => {
+            // eslint-disable-next-line no-undef
             const nextReducer = require('../reducers').default;
 
             store.replaceReducer(nextReducer);

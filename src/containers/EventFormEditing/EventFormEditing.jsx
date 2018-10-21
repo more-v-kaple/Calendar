@@ -101,7 +101,7 @@ EventFormEditing.propTypes = {
     handleBlur: PropTypes.func.isRequired,
     members: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date)
+    date: PropTypes.string.isRequired
 };
 
 export default EventFormEditing;

@@ -10,7 +10,10 @@ import editEventMiddleware from 'Redux/middlewares/editEventMiddleware';
 
 import { getEvent } from 'Redux/selectors';
 
-import { displayDateMonth, formatDateMonthIntoFullDate } from 'Utils/formatDate';
+import {
+    displayDateMonth,
+    formatDateMonthIntoFullDate
+} from 'Utils/formatDate';
 
 import { REMOVE, DONE, ID } from 'Constants';
 
@@ -108,7 +111,7 @@ class EventForm extends PureComponent {
     handleInput = e => {
         const { name, value } = e.target;
 
-        this.setState(prevState => ({ [name]: value }));
+        this.setState({ [name]: value });
     }
 
     handleFocus = e => {

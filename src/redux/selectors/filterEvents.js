@@ -5,7 +5,7 @@ const filterEvents = (events, keyword = '') => {
         filteredEvents = events.filter(event => {
             for (let key in event) {
                 if(event[key].toLowerCase().includes(filter)) {
-
+                    console.log(event, 'event in filterEvents', typeof event.date)
                     return event;
                 }
             }

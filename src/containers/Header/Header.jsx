@@ -83,9 +83,9 @@ class Header extends PureComponent {
 }
 
 Header.propTypes = {
-    disableClickInterceptor: PropTypes.func.isRequired,
-    enableClickInterceptor: PropTypes.func.isRequired,
-    outsideClick: PropTypes.string.isRequired
+    disableClickInterceptor: PropTypes.func,
+    enableClickInterceptor: PropTypes.func,
+    outsideClick: PropTypes.string
 };
 
 export default Header;
