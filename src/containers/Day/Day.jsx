@@ -83,7 +83,7 @@ Day.propTypes = {
     isWithTitle: PropTypes.bool.isRequired,
     event: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired,
         id: PropTypes.string.isRequired,
         members: PropTypes.string,
         description: PropTypes.string

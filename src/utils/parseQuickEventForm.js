@@ -9,16 +9,16 @@ const parseQuickEventForm = (event) => {
         title = values[2],
         { year: currentYear, month: currentMonth } = getCurrentMonthYear();
     let date = moment(`${currentYear} ${stringMonth} ${day} ${time}`,
-        "YYYY MMM DD HH:mm", "ru").format();
+        "YYYY MMM DD HH:mm", "ru");
     const month = new Date(date).getMonth();
 
     if (currentMonth > month) {
         date = moment(`${currentYear + 1} ${stringMonth} ${day} ${time}`,
-            "YYYY MMM DD HH:mm", "ru").format();
+            "YYYY MMM DD HH:mm", "ru");
     }
 
     return {
-        date,
+        date: new Date(date),
         title,
         members: '',
         description: ''

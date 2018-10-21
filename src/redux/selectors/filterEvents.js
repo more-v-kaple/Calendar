@@ -4,8 +4,8 @@ const filterEvents = (events, keyword = '') => {
     const filter = keyword.toLowerCase(),
         filteredEvents = events.filter(event => {
             for (let key in event) {
-                if(event[key].toLowerCase().includes(filter)) {
-                    console.log(event, 'event in filterEvents', typeof event.date)
+                if(event[key].toString().toLowerCase().includes(filter)) {
+
                     return event;
                 }
             }

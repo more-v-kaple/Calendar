@@ -30,7 +30,7 @@ class DropdownItem extends PureComponent {
 DropdownItem.propTypes = {
     event: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired,
         id: PropTypes.string.isRequired,
         past: PropTypes.bool
     }).isRequired

@@ -24,7 +24,7 @@ class Event extends PureComponent {
 Event.propTypes = {
     event: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired,
         id: PropTypes.string.isRequired,
         members: PropTypes.string,
         description: PropTypes.string

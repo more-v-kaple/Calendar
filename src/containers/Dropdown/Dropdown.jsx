@@ -33,7 +33,7 @@ class Dropdown extends PureComponent {
                 : null;
 
         if (prevHovered !== hoveredItem && hoveredItem) {
-            selectDate(hoveredItem);
+            selectDate(new Date(hoveredItem));
 
             this.setState({ hoveredItem })
         }
@@ -72,7 +72,7 @@ class Dropdown extends PureComponent {
 Dropdown.propTypes = {
     list: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired,
         id: PropTypes.string.isRequired,
         members: PropTypes.string,
         description: PropTypes.string,

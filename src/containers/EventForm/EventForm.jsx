@@ -67,11 +67,13 @@ class EventForm extends PureComponent {
         switch (position) {
             case "left":
                 form.style.left = `${dayCoords.left - form.offsetWidth}px`;
+                form.style.top = `${dayCoords.top + window.pageYOffset}px`;
                 form.classList.remove('arrow-left');
                 form.classList.add('arrow-right');
                 break;
             case "right":
                 form.style.left = `${dayCoords.left + dayCoords.width}px`;
+                form.style.top = `${dayCoords.top + window.pageYOffset}px`;
                 form.classList.remove('arrow-right');
                 form.classList.add('arrow-left');
                 break;
@@ -82,7 +84,6 @@ class EventForm extends PureComponent {
                 form.classList.remove('arrow-left');
                 break;
         }
-        form.style.top = `${dayCoords.top + window.pageYOffset}px`;
     }
 
     eraseValue = e => {
@@ -95,7 +96,7 @@ class EventForm extends PureComponent {
         const { addEvent, editEvent, closeForm } = this.props,
             { date, id, ...data } = this.state,
             formattedDate = formatDateMonthIntoFullDate(date);
-        const event = { ...data, date: formattedDate.toString() };
+        const event = { ...data, date: formattedDate };
 
         id ? editEvent(id, event) : addEvent(event);
         closeForm();
@@ -167,7 +168,6 @@ class EventForm extends PureComponent {
 EventForm.defaultProps = {
     event: {
         title: '',
-        date: '',
         members: '',
         description: ''
     }
@@ -180,7 +180,7 @@ EventForm.propTypes = {
     editEvent: PropTypes.func.isRequired,
     event: PropTypes.shape({
         title: PropTypes.string,
-        date: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date),
         id: PropTypes.string,
         members: PropTypes.string,
         description: PropTypes.string
