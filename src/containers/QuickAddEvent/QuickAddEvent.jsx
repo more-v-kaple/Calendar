@@ -10,8 +10,8 @@ import parseQuickEventForm from 'Utils/parseQuickEventForm';
 
 import { PLACEHOLDER_ADD_EVENT, CREATE } from 'Constants';
 
-import Input from 'Components/Input';
-import IconButton from 'Components/IconButton';
+import Input from 'Containers/Input';
+import IconButton from 'Containers/IconButton';
 import Button from 'Components/Button';
 
 const icon = {
@@ -30,7 +30,7 @@ class QuickAddEvent extends PureComponent {
 
         this.state = {
             ...initialValue
-        }
+        };
     }
 
     handleInput = e => {
@@ -57,7 +57,7 @@ class QuickAddEvent extends PureComponent {
             { handleCloseForm } = this.props;
 
         return (
-            <div className="quick-add-event">
+            <div className="quick-add-event arrow-up">
                 <div className="quick-add-event__close">
                     <IconButton
                         handleClick = { handleCloseForm }

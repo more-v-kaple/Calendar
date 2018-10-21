@@ -9,7 +9,6 @@ const aliases = {
     Constants: path.resolve(__dirname, `${root}constants/`),
     Styles: path.resolve(__dirname, `${root}assets/styles`),
     Redux: path.resolve(__dirname, `${root}redux/`),
-    Mocks: path.resolve(__dirname, `${root}mocks/`),
     Utils: path.resolve(__dirname, `${root}utils/`)
 };
 

@@ -13,6 +13,7 @@
 
         &.pressed {
             background-color: #015da4;
+            transition: background-color 0.3s;
         }
     }
 

@@ -1,11 +1,13 @@
 
 import { fetchEvents } from 'Redux/actionCreators';
 
-const fetchEventsMiddleware = payload => (dispatch, getState, getFirebase) => {
-    // const firebase = getFirebase();
-
-    dispatch(fetchEvents(payload));
-
+const fetchEventsMiddleware = () => (dispatch, getState, getFirebase) => {
+    getFirebase().database().ref(`events`).once('value')
+        .then(snapshot => snapshot.val())
+        .then(data => {
+            const events = Object.entries(data).map(event => ({ ...event[1], id: event[0] }));
+            dispatch(fetchEvents(events))
+        })
 }
 
 export default fetchEventsMiddleware;

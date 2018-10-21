@@ -11,7 +11,7 @@ const filterEvents = (events, keyword = '') => {
             }
         });
 
-    return sortByRelevance(filteredEvents, filter);
+    return sortByRelevance(filteredEvents);
 };
 
 export default filterEvents;

@@ -19,7 +19,9 @@ const parseQuickEventForm = (event) => {
 
     return {
         date,
-        title
+        title,
+        members: '',
+        description: ''
     }
 };
 

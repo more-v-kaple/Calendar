@@ -5,22 +5,18 @@ import {
     ADD_EVENT
 } from '../actionTypes';
 
-import generateObjectId from 'Utils/generateObjectId';
 import deepClone from 'Utils/deepClone';
 
 import { ID } from 'Constants';
 
-import mocks from 'Mocks';
-const events = (state = mocks, action) => {
+const events = (state = [], action) => {
     const stateCopy = deepClone(state);
 
     switch (action.type) {
         case FETCH_EVENTS:
-
             return [...action.payload];
         case ADD_EVENT:
-            return [ ...stateCopy, { ...action.payload,
-                id: generateObjectId()
+            return [ ...stateCopy, { ...action.payload
             }];
         case REMOVE_EVENT:
 

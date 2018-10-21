@@ -12,11 +12,22 @@
     border-bottom: 1px solid #ebebeb;
 
     .item__title {
+        padding-bottom: 2px;
         font-weight: 700;
+    }
+
+    .item__date {
+        font-size: 12px;
+        opacity: 0.8;
+    }
+
+    &.outdated {
+        color: transparentize($color: #000000, $amount: 0.5);
     }
 
     &:hover {
         background-color: #27a1ff;
         color: white;
     }
+
 }

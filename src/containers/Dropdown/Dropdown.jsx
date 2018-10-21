@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -22,47 +22,64 @@ class Dropdown extends PureComponent {
 
         this.state = {
             ...initialState
-        }
+        };
     }
 
     handleMouseOver = e => {
-        const { handleHover } = this.props,
+        const { selectDate } = this.props,
             prevHovered = this.state.hoveredItem,
             hoveredItem = e.target.closest('[data-date]') ?
                 e.target.closest('[data-date]').dataset.date
                 : null;
 
         if (prevHovered !== hoveredItem && hoveredItem) {
-            handleHover(hoveredItem);
-            console.log('handleHover', hoveredItem);
+            selectDate(hoveredItem);
+
             this.setState({ hoveredItem })
         }
     }
 
     render () {
-        const { handleClick, list } = this.props;
+        const { list, handleClick } = this.props;
 
         return (
-            <ul className = "dropdown"
-                onClick = { handleClick }
-                onMouseOver = { this.handleMouseOver }
-            >
+            <Fragment>
                 {
-                    list.map(event => (
-                        <DropdownItem
-                            key = { event[ID] }
-                            event = { event }
-                        />
-                    ))
+                    list.length ?
+                        <div className="dropdown-wrapper arrow-up">
+                            <ul className = "dropdown"
+                                onClick = { handleClick }
+                                onMouseOver = { this.handleMouseOver }
+                            >
+                                {
+                                    list.map(event => (
+                                        <DropdownItem
+                                            key = { event[ID] }
+                                            event = { event }
+                                        />
+                                    ))
+
+                                }
+                            </ul>
+                        </div>
+                        : null
                 }
-            </ul>
+            </Fragment>
         );
     }
 }
+
 Dropdown.propTypes = {
-    list: PropTypes.arrayOf(PropTypes.string).isRequired,
+    list: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        members: PropTypes.string,
+        description: PropTypes.string,
+        past: PropTypes.bool
+    })).isRequired,
     handleClick: PropTypes.func.isRequired,
-    handleHover: PropTypes.func.isRequired
+    selectDate: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, props) => ({
@@ -70,7 +87,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    handleHover: payload => dispatch(selectDate(payload))
+    selectDate: payload => dispatch(selectDate(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown);

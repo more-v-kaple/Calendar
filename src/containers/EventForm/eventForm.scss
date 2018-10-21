@@ -1,9 +1,9 @@
 .event-form {
-    top: 120px;
-    padding: 24px 10px 24px 24px;
+    // top: 120px;
+    padding: 5px 10px 24px 24px;
     width: 300px;
     height: 330px;
-    right: 10px;
+    // right: 10px;
     border: 1px solid #cccccc;
     border-radius: 3px;
     box-sizing: border-box;
@@ -31,15 +31,4 @@
         }
     }
 
-    &__title, &__date {
-        padding-bottom: 5px;
-    }
-
-    &__members {
-        padding-bottom: 37px;
-    }
-
-    .members__title {
-        
-    }
 }

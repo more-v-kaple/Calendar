@@ -15,7 +15,7 @@ import {
     changeMonthYear as changeMonthYearUtil
 } from 'Utils/calculateDate/changeMonthYear';
 
-import IconButton from 'Components/IconButton';
+import IconButton from 'Containers/IconButton';
 
 const icon = {
     name: 'arrow',
@@ -23,7 +23,6 @@ const icon = {
 };
 
 class MonthControls extends PureComponent {
-
     changeDate = e => {
         const { changeMonthYear, year, month } = this.props,
             change = e.currentTarget.dataset.role;

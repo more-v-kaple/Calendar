@@ -20,7 +20,7 @@ class Header extends PureComponent {
 
         this.state = {
             ...initialState
-        }
+        };
     }
 
     componentDidUpdate () {
@@ -33,7 +33,7 @@ class Header extends PureComponent {
     }
 
     refresh = () => {
-        console.log('refresh')
+        // console.log('refresh')
     }
 
     openForm = () => {

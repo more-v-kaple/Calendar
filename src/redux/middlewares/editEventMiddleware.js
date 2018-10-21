@@ -1,11 +1,12 @@
 
 import { editEvent } from 'Redux/actionCreators';
 
-const editEventMiddleware = payload => (dispatch, getState, getFirebase) => {
-    // const firebase = getFirebase();
+const editEventMiddleware = (id, event) => (dispatch, getState, getFirebase) => {
+    const firebase = getFirebase();
 
-    dispatch(editEvent(payload));
+    firebase.database().ref(`events/${id}`).set({ ...event } );
 
+    dispatch(editEvent({ ...event, id }));
 }
 
 export default editEventMiddleware;

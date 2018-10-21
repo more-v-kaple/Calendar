@@ -1,5 +1,6 @@
 import {
     CHANGE_MONTH_YEAR,
+    TOGGLE_EVENT_FORM,
     FETCH_EVENTS,
     REMOVE_EVENT,
     SELECT_DATE,
@@ -34,5 +35,10 @@ export const changeMonthYear = payload => ({
 
 export const selectDate = payload => ({
     type: SELECT_DATE,
+    payload
+});
+
+export const toggleEventForm = payload => ({
+    type: TOGGLE_EVENT_FORM,
     payload
 });

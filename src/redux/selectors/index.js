@@ -14,6 +14,8 @@ export const getMonthYear = createSelector(
     })
 );
 
+export const getEventFormStatus = state => state.eventForm.isOpen;
+
 export const getSelectedDay = state => state.date.selected;
 
 export const getEventsFilter = (state, props) => props.keyword;
@@ -28,6 +30,12 @@ export const getFilteredEvents = createSelector(
 
 export const getEvent = createSelector(
     getEventDate,
+    eventSelector,
+    (date, events) => getEventByDate(date, events)
+);
+
+export const getSelectedEvent = createSelector(
+    getSelectedDay,
     eventSelector,
     (date, events) => getEventByDate(date, events)
 );

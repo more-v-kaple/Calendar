@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './input.scss';
 
-import IconButton from 'Components/IconButton';
+import IconButton from 'Containers/IconButton';
 
 const icon = {
     name: 'remove',
@@ -20,10 +20,11 @@ class Input extends PureComponent {
                 placeholder,
                 handleBlur,
                 inputValue,
+                style,
                 name
             } = this.props,
             isEraseAvailable = inputValue && handleEraseValue ?
-                true: false;
+                true : false;
 
         return (
             <div className = "input-wrapper"
@@ -36,7 +37,7 @@ class Input extends PureComponent {
                     onInput = { handleInput }
                     onBlur = { handleBlur }
                     value = { inputValue }
-                    className="input"
+                    className={ `input ${style}`}
                     name = { name }
                     type = "text"
                 />
@@ -55,7 +56,8 @@ class Input extends PureComponent {
 
 Input.defaultProps = {
     placeholder: '',
-    name: 'input'
+    name: 'input',
+    style: ''
 };
 
 Input.propTypes = {
@@ -65,7 +67,9 @@ Input.propTypes = {
     placeholder: PropTypes.string,
     handleSubmit: PropTypes.func,
     handleFocus: PropTypes.func,
-    handleBlur: PropTypes.func
+    handleBlur: PropTypes.func,
+    style: PropTypes.string,
+    name: PropTypes.string
 };
 
 export default Input;

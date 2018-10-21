@@ -2,7 +2,10 @@ body, ul, p, li {
     margin: 0;
     padding: 0;
     font-size: 15px;
+}
 
+body {
+    min-width: 960px;
     li {
         list-style-type: none;
     }

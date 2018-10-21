@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Dropdown from 'Containers/Dropdown';
-import Input from 'Components/Input';
+import Input from 'Containers/Input';
 
 const InputDropdown = props => {
     const {
+        handleEraseValue,
         isDropdownOpened,
         handleSubmit,
         handleFocus,
@@ -21,13 +22,14 @@ const InputDropdown = props => {
         <div className="input-wrapper"
         >
             <Input
+                handleEraseValue = { handleEraseValue }
                 placeholder = { placeholder }
                 onKeyPress = { handleSubmit }
                 handleFocus = { handleFocus }
                 handleInput = { handleInput }
-                autoFocus = { autofocus }
                 handleBlur = { handleBlur }
                 inputValue = { inputValue }
+                autoFocus = { autofocus }
                 className = "input"
                 type = "text"
             />
@@ -51,6 +53,7 @@ InputDropdown.defaultProps = {
 InputDropdown.propTypes = {
     inputValue: PropTypes.string.isRequired,
     handleInput: PropTypes.func.isRequired,
+    handleEraseValue: PropTypes.func,
     isDropdownOpened: PropTypes.bool,
     placeholder: PropTypes.string,
     handleSubmit: PropTypes.func,

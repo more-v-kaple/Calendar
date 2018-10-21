@@ -4,7 +4,12 @@
 
     &__date {
         padding: 0 8px 0 6px;
+        width: 157px;
         font-size: 25px;
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
     }
 
     .button {

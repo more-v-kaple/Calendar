@@ -9,3 +9,5 @@ export const EDIT_EVENT = 'EDIT_EVENT';
 export const CHANGE_MONTH_YEAR = 'CHANGE_MONTH_YEAR';
 
 export const SELECT_DATE = 'SELECT_DATE';
+
+export const TOGGLE_EVENT_FORM = 'TOGGLE_EVENT_FORM';

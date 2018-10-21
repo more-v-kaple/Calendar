@@ -1,15 +1,22 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import './calendar.scss';
+
+import fetchEventsMiddleware from 'Redux/middlewares/fetchEventsMiddleware';
 
 import Month from 'Containers/Month';
 import Navigation from 'Containers/Navigation';
 
 class Calendar extends PureComponent {
+    componentDidMount () {
+        const { fetchEvents } = this.props;
+
+        fetchEvents();
+    }
 
     render () {
-        // const { title, children } = this.props;
 
         return (
             <div className="calendar">
@@ -24,8 +31,12 @@ class Calendar extends PureComponent {
     }
 }
 
-// Calendar.propTypes = {
-//     title: PropTypes.string.isRequired
-// }
+Calendar.propTypes = {
+    fetchEvents: PropTypes.func.isRequred
+};
 
-export default Calendar;
+const mapDispatchToProps = dispatch => ({
+    fetchEvents: () => dispatch(fetchEventsMiddleware())
+});
+
+export default connect(null, mapDispatchToProps)(Calendar);

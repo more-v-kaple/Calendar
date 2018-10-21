@@ -1,0 +1,28 @@
+.event-form__editing {
+    display: flex;
+    flex-direction: column;
+
+    .editing__title, .editing__date {
+        padding-bottom: 5px;
+    }
+
+    .input.formatted {
+        border: none;
+        box-shadow: none;
+    }
+
+    .editing__title {
+        .input.formatted {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    .editing__members {
+        padding-bottom: 37px;
+    }
+
+    .editing__description {
+        padding-bottom: 25px;
+    }
+}

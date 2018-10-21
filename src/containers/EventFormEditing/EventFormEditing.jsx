@@ -8,6 +8,7 @@ import {
     PLACEHOLDER_MEMBERS,
     PLACEHOLDER_EVENT,
     PLACEHOLDER_DATE,
+    MEMBERS_TITLE,
     DESCRIPTION,
     MEMBERS,
     TITLE,
@@ -15,7 +16,7 @@ import {
 } from 'Constants';
 
 import TextField from 'Components/TextField';
-import Input from 'Components/Input';
+import Input from 'Containers/Input';
 
 class EventFormEditing extends PureComponent {
 
@@ -24,6 +25,8 @@ class EventFormEditing extends PureComponent {
             handleEraseValue,
             handleInput,
             description,
+            handleFocus,
+            handleBlur,
             members,
             title,
             date
@@ -33,9 +36,12 @@ class EventFormEditing extends PureComponent {
             <div className="event-form__editing">
                 <div className="editing__title">
                     <Input
-                        handleEraseValue = { handleEraseValue}
+                        handleEraseValue = { handleEraseValue }
                         placeholder = { PLACEHOLDER_EVENT }
+                        style = { title ? 'formatted' : ''}
+                        handleFocus = { handleFocus }
                         handleInput = { handleInput }
+                        handleBlur = { handleBlur }
                         inputValue = { title }
                         name = { TITLE }
                     />
@@ -44,16 +50,28 @@ class EventFormEditing extends PureComponent {
                     <Input
                         handleEraseValue = { handleEraseValue }
                         placeholder = { PLACEHOLDER_DATE }
+                        style = { date ? 'formatted' : ''}
                         handleInput = { handleInput }
+                        handleFocus = { handleFocus }
+                        handleBlur = { handleBlur }
                         inputValue = { date }
                         name = { DATE }
                     />
                 </div>
                 <div className="editing__members">
+                    {
+                        members &&
+                        <p className="members__title">
+                            { MEMBERS_TITLE }
+                        </p>
+                    }
                     <Input
                         handleEraseValue = { handleEraseValue }
                         placeholder = { PLACEHOLDER_MEMBERS }
+                        style = { members ? 'formatted' : ''}
                         handleInput = { handleInput }
+                        handleFocus = { handleFocus }
+                        handleBlur = { handleBlur }
                         inputValue = { members }
                         name = { MEMBERS }
                     />
@@ -61,8 +79,11 @@ class EventFormEditing extends PureComponent {
                 <div className="editing__description">
                     <TextField
                         placeholder = { PLACEHOLDER_DESCRIPTION }
+                        style = { description ? 'formatted' : ''}
                         handleEraseValue = { handleEraseValue }
                         handleInput = { handleInput }
+                        handleFocus = { handleFocus }
+                        handleBlur = { handleBlur }
                         value = { description }
                         name = { DESCRIPTION }
                     />
@@ -75,10 +96,12 @@ class EventFormEditing extends PureComponent {
 EventFormEditing.propTypes = {
     handleEraseValue: PropTypes.func.isRequired,
     description: PropTypes.string.isRequired,
+    handleFocus: PropTypes.func.isRequired,
     handleInput: PropTypes.func.isRequired,
+    handleBlur: PropTypes.func.isRequired,
     members: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
+    date: PropTypes.instanceOf(Date)
 };
 
 export default EventFormEditing;

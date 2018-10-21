@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './week.scss';
 
-import Day from '../Day';
+import Day from 'Containers/Day';
 
 class Week extends PureComponent {
 

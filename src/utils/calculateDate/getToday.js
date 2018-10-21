@@ -1,7 +1,3 @@
-const getToday = () => new Date().toLocaleString('ru', {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric'
-});
+const getToday = () => new Date();
 
 export default getToday;

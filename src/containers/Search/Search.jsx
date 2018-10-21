@@ -1,17 +1,27 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import './search.scss';
 
+import clickInterceptor from 'Decorators/clickInterceptor';
+
+import { toggleEventForm } from 'Redux/actionCreators';
+
+import { getSelectedEvent } from 'Redux/selectors';
+
+import findMatch from 'Utils/helpers/findMatch';
+
 import { PLACEHOLDER_SEARCH } from 'Constants';
 
-import InputDropdown from 'Components/InputDropdown';
+import InputDropdown from 'Containers/InputDropdown';
 import Icon from 'Components/Icons';
 
 const initialState = {
     isDropdownOpened: false,
     inputValue: ''
 };
-
+@clickInterceptor({ target: 'search' })
 class Search extends PureComponent {
     constructor (props) {
         super(props);
@@ -21,12 +31,44 @@ class Search extends PureComponent {
         };
     }
 
-    handleClickDropdown = e => {
-        console.log(e.target.dataset.id);
+    componentDidUpdate (prevProps, prevState) {
+        const { outsideClick, disableClickInterceptor } = this.props,
+            { isDropdownOpened } = this.state;
+
+        if (isDropdownOpened && outsideClick) {
+            this.showDropdown(false);
+            disableClickInterceptor();
+        }
+
+        if (!isDropdownOpened &&
+            isDropdownOpened !== prevState.isDropdownOpened) {
+            disableClickInterceptor();
+        }
     }
 
-    toggleDropdown = () => {
-        this.setState(prevState => ({ isDropdownOpened: !prevState.isDropdownOpened }));
+    handleClick = () => {
+        const { toggleEventForm, event } = this.props,
+            { inputValue } = this.state,
+            match = findMatch(inputValue, event);
+
+        this.setState(prevState => ({ inputValue: match }));
+        toggleEventForm(true);
+        this.showDropdown(false);
+    }
+
+    showDropdown = status => {
+        this.setState(prevState => ({ isDropdownOpened: status }));
+    }
+
+    handleFocus = () => {
+        const { enableClickInterceptor } = this.props;
+
+        this.showDropdown(true);
+        enableClickInterceptor();
+    }
+
+    handleEraseValue = () => {
+        this.setState(prevState => ({ inputValue: '' }));
     }
 
     handleInput = e => {
@@ -47,12 +89,12 @@ class Search extends PureComponent {
                     />
                 </div>
                 <InputDropdown
-                    handleClick = { this.handleClickDropdown }
+                    handleEraseValue = { this.handleEraseValue }
                     isDropdownOpened = { isDropdownOpened }
                     placeholder = { PLACEHOLDER_SEARCH }
-                    handleFocus = { this.toggleDropdown }
-                    handleBlur = { this.toggleDropdown }
+                    handleFocus = { this.handleFocus }
                     handleInput = { this.handleInput }
+                    handleClick = { this.handleClick }
                     inputValue = { inputValue }
                 />
             </div>
@@ -60,4 +102,26 @@ class Search extends PureComponent {
     }
 }
 
-export default Search;
+Search.propTypes = {
+    disableClickInterceptor: PropTypes.func.isRequired,
+    enableClickInterceptor: PropTypes.func.isRequired,
+    outsideClick: PropTypes.string.isRequired,
+    toggleEventForm: PropTypes.func.isRequired,
+    event: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        members: PropTypes.string,
+        description: PropTypes.string
+    })
+};
+
+const mapStateToProps = state => ({
+    event: getSelectedEvent(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+    toggleEventForm: payload => dispatch(toggleEventForm(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

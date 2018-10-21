@@ -21,8 +21,14 @@ class Event extends PureComponent {
     }
 }
 
-// Event.propTypes = {
-//     title: PropTypes.string.isRequired
-// }
+Event.propTypes = {
+    event: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        members: PropTypes.string,
+        description: PropTypes.string
+    }).isRequired
+};
 
 export default Event;

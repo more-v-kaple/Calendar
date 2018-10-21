@@ -11,7 +11,6 @@ $placeholder__color: #848484;
     width: 200px;
     height: 25px;
     position: relative;
-    box-shadow: 0px -1px 2px hsl(0, 0%, 80%);
 
     .input {
         height: 100%;
@@ -20,18 +19,11 @@ $placeholder__color: #848484;
         padding: $input__padding;
         font-size: $font-size;
         line-height: $line-height;
+        box-shadow: 0px -1px 2px hsl(0, 0%, 80%);
         color: black;
-
-        &.applied-style {
-            color: $common__dark-color;
-        }
-
-        &.error {
-            color: $red;
-        }
+        text-indent: 5px;
 
         &::placeholder {
-            text-indent: 6px;
             color: #cccccc;
         }
     }
